@@ -15,7 +15,7 @@ export class ReviewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.reviews = this.restaurantsService.restaurantById(this.route.parent.snapshot.params['id']);
+    this.reviews = this.restaurantsService.reviewsOfRestaurant(this.route.parent.snapshot.params['id']);
   }
 
 }
