@@ -1,8 +1,10 @@
-import {CartItem} from './cart-item.model';
-import {MenuItem} from '../menu-item/menu-item.model';
+import { CartItem } from './cart-item.model';
+import { MenuItem } from '../menu-item/menu-item.model';
 import 'rxjs/add/operator/map';
 
 export class ShoppingCartService {
+
+
   items: CartItem[] = [];
 
   clear() {
@@ -30,6 +32,17 @@ export class ShoppingCartService {
 
   removeItem(item: CartItem) {
     this.items.splice(this.items.indexOf(item), 1);
+  }
+
+  increaseQty(item: CartItem) {
+    item.quantity = item.quantity + 1;
+  }
+
+  decreaseQty(item: CartItem) {
+    item.quantity = item.quantity - 1;
+    if (item.quantity === 0) {
+      this.removeItem(item);
+    }
   }
 
 }
